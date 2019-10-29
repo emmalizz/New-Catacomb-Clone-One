@@ -16,7 +16,8 @@ public class Stalactite : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if (Player.transform.position.x == this.transform.position.x) this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic; //stalactite falls when player is directly under it
+        if (Player.transform.position.x == this.transform.position.x)
+            this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic; //stalactite falls when player is directly under it
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

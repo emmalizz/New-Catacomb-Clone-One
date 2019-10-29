@@ -34,6 +34,7 @@ public class GroundCollapse : MonoBehaviour
 
 	void collapseGround()
 	{
+		StartCoroutine(shakeGround());
 		childrenList[0].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 		shiftUp(childrenList);
 	}
@@ -54,4 +55,19 @@ public class GroundCollapse : MonoBehaviour
                 len++;
 		return len;
     }
+
+    IEnumerator shakeGround()
+	{
+		float startingX = childrenList[0].transform.position.x;
+		float time = 0f;
+		float shakeTime = 1.0f;
+
+        while (time < shakeTime)
+		{
+			time += Time.deltaTime;
+			childrenList[0].transform.position = new Vector3(startingX + Mathf.Sin(time) * .15f, childrenList[0].transform.position.y, childrenList[0].transform.position.z);
+		}
+
+		yield return null;
+	}
 }
