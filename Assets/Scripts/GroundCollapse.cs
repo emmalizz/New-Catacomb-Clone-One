@@ -64,7 +64,7 @@ public class GroundCollapse : MonoBehaviour
 
         while (time < shakeTime)
 		{
-			time += Time.deltaTime; print(Time.deltaTime);
+			time += Time.deltaTime; 
 			childrenList[0].transform.position = new Vector3(startingX + Mathf.Sin(time) * .15f, childrenList[0].transform.position.y, childrenList[0].transform.position.z);
 		}
 
