@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D obj;
 
     public bool isGrounded = false;
+    public bool sideCollided = false;
 
     public float speed;
     public float jumpHeight;
@@ -65,6 +66,10 @@ public class PlayerMovement : MonoBehaviour
             if (isGrounded)
             {
                 obj.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
+            }
+            else if (sideCollided)
+            {
+                obj.AddForce(new Vector2(speed * 0.50f * facing, jumpHeight * 0.35f), ForceMode2D.Impulse);
             }
             doJump = false;
         }
